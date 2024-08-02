@@ -42,33 +42,24 @@ class _GenerateQRState extends State<GenerateQR> {
             SizedBox(height: 16),
             // Builder(
             //   builder: (BuildContext context) {
-            //     return IconButton(
+            //     return ElevatedButton(
             //       onPressed: () {
             //         Navigator.of(context).push(
-            //           MaterialPageRoute(
-            //             builder: (context) => const ScanQR(),
-            //           ),
+            //           MaterialPageRoute(builder: (context) => const ScanQR()),
             //         );
             //       },
-            //       highlightColor: Colors.redAccent,
-            //       splashColor: Colors.redAccent,
-            //       icon: const Icon(
-            //         Icons.add_circle,
-            //         color: Colors.black12,
-            //         size: 30,
-            //       ),
+            //       child: const Text('Decrypt'),
             //     );
             //   },
             // ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanQR()));
-                });
-                print("Data: ${_inputController.text}");
-              },
-              child: Text('Scanner Barcode'),
-            ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ScanQR()),
+              );
+            },
+            child: const Text('Decrypt'),
+          ),
 
             SizedBox(height: 16),
             if (_inputController.text.isNotEmpty)
@@ -80,7 +71,7 @@ class _GenerateQRState extends State<GenerateQR> {
               ),),
             if (_inputController.text.isNotEmpty)
               SizedBox(height: 16),
-            Center(child:Text(_inputController.text),)
+            Center(child: Text(_inputController.text),)
           ],
         ),
       ),

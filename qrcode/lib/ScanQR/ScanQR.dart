@@ -16,16 +16,14 @@ class _ScanQRState extends State<ScanQR> {
   void reassemble() {
     super.reassemble();
     if (scanController != null) {
-      scanController!.pauseCamera();
-      scanController!.resumeCamera();
+      scanController?.pauseCamera();
+      scanController?.resumeCamera();
     }
   }
 
   @override
   void dispose() {
     scanController?.dispose();
-     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
     super.dispose();
   }
 
@@ -33,7 +31,6 @@ class _ScanQRState extends State<ScanQR> {
     scanController = controller;
     controller.scannedDataStream.listen((scanData) {
       final code = scanData.code;
-      print("+++++++++++++++++code+++++++++++++++++++$code");
       if (code != null) {
         setState(() {
           textQr = code;
@@ -50,9 +47,9 @@ class _ScanQRState extends State<ScanQR> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scan QR Code'),
+        title: const Text('Scan QR Code'),
       ),
-      body: ListView(
+      body: Column(
         children: [
           Expanded(
             flex: 5,
@@ -74,10 +71,8 @@ class _ScanQRState extends State<ScanQR> {
               child: Text('Scanned Data: $textQr'),
             ),
           ),
-
         ],
       ),
     );
   }
 }
-
